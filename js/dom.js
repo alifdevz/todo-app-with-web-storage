@@ -1,5 +1,6 @@
 const UNCOMPLETED_LIST_TODO_ID = "todos";
 const COMPLETED_LIST_TODO_ID = "completed-todos";
+const TODO_ITEMID = "itemId";
 
 function makeTodo(data /* string */, timestamp /* string */, isCompleted /* boolean */) {
 
@@ -63,11 +64,17 @@ function addTodo() {
     const uncompletedTODOList = document.getElementById(UNCOMPLETED_LIST_TODO_ID);
     const textTodo = document.getElementById("title").value;
     const timestamp = document.getElementById("date").value;
+
     const todo = makeTodo(textTodo, timestamp, false);
+    const todoObject = composeTodoObject(textTodo, timestamp, false);
+
+    todo[TODO_ITEMID] = todoObject.id;
+    todos.push(todoObject);
 
     uncompletedTODOList.append(todo);
+    updateDataToStorage();
 }
-function addTaskToCompleted(taskElement /* HTMLELement */) {
+function addTaskToCompleted(taskElement /* HTML Element */) {
     const listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
     const taskTitle = taskElement.querySelector(".inner > h2").innerText;
     const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
