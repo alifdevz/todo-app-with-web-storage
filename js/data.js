@@ -25,7 +25,7 @@ function loadDataFromStorage() {
   
     document.dispatchEvent(new Event("ondataloaded"));
 }
-  
+
 function updateDataToStorage() {
     if (isStorageExist())
         saveData();
