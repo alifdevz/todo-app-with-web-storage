@@ -68,7 +68,9 @@ function addTodo() {
     const todo = makeTodo(textTodo, timestamp, false);
     const todoObject = composeTodoObject(textTodo, timestamp, false);
 
+    // added a new property to todo element (container)
     todo[TODO_ITEMID] = todoObject.id;
+
     todos.push(todoObject);
 
     uncompletedTODOList.append(todo);
